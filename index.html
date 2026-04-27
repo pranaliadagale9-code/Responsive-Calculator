@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Tools Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <div class="nav-toggle">
+            <button class="nav-btn active" data-tool="calculator">🧮 Calculator</button>
+            <button class="nav-btn" data-tool="notes">📝 Notes</button>
+        </div>
+
+        <!-- ADVANCED CALCULATOR -->
+        <div id="calculator" class="tool active">
+            <div class="calc-display">
+                <div class="calc-history" id="calc-history"></div>
+                <input type="text" id="calc-input" readonly value="0">
+            </div>
+            <div class="calc-buttons">
+                <!-- Row 1 -->
+                <button class="btn-clear" onclick="clearAll()">AC</button>
+                <button class="btn-clear" onclick="clearEntry()">CE</button>
+                <button class="btn-func" onclick="toggleSign()">±</button>
+                <button class="btn-func" onclick="appendToCalc('%')">%</button>
+                
+                <!-- Row 2 -->
+                <button class="btn-op" onclick="appendToCalc('÷')">÷</button>
+                <button class="btn-num" onclick="appendToCalc('7')">7</button>
+                <button class="btn-num" onclick="appendToCalc('8')">8</button>
+                <button class="btn-num" onclick="appendToCalc('9')">9</button>
+                
+                <!-- Row 3 -->
+                <button class="btn-op" onclick="appendToCalc('×')">×</button>
+                <button class="btn-num" onclick="appendToCalc('4')">4</button>
+                <button class="btn-num" onclick="appendToCalc('5')">5</button>
+                <button class="btn-num" onclick="appendToCalc('6')">6</button>
+                
+                <!-- Row 4 -->
+                <button class="btn-op" onclick="appendToCalc('-')">-</button>
+                <button class="btn-num" onclick="appendToCalc('1')">1</button>
+                <button class="btn-num" onclick="appendToCalc('2')">2</button>
+                <button class="btn-num" onclick="appendToCalc('3')">3</button>
+                
+                <!-- Row 5 -->
+                <button class="btn-op" onclick="appendToCalc('+')">+</button>
+                <button class="btn-num" onclick="appendToCalc('0')" style="grid-column: span 2">0</button>
+                <button class="btn-num" onclick="appendToCalc('.')">.</button>
+                <button class="btn-equal" onclick="calculate()">=</button>
+            </div>
+        </div>
+
+        <!-- NOTES -->
+        <div id="notes" class="tool">
+            <div class="notes-header">
+                <h2>📝 Notes</h2>
+                <div class="notes-actions">
+                    <button onclick="clearNotes()" class="btn-clear-notes">Clear All</button>
+                    <span id="notes-status">Saved</span>
+                </div>
+            </div>
+            <textarea id="notes-text" placeholder="✍️ Start typing... Auto-saves every 2 seconds"></textarea>
+            <div class="notes-footer">
+                <small>💾 Last saved: <span id="last-saved"></span></small>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
